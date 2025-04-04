@@ -1,0 +1,227 @@
+/*rgb(30, 25, 31), rgb(50,35, 41)*/
+body{
+
+    background-image: linear-gradient(to bottom right, rgb(18, 3, 9), rgb(27, 21, 26));
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+h1{
+
+    position: absolute;
+    
+    top: 10%;
+    left: 20%;
+    opacity: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    transform: translateY(100px);
+    transition: opacity 6s ease-in-out, transform 4s cubic-bezier(0.42, 0, 0.1, 1);
+}
+
+h2{
+
+    margin-top: 0.2em;
+    margin-left: 0.3em;
+    opacity: 65%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+
+
+
+h1.loaded{
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+h1.loaded2{
+    font-size:medium;
+    opacity: 65%;
+    transform: translateY(430%);
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-container > div{
+    cursor: pointer;
+    width: auto;
+    margin-left: 5%;
+    margin-right: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size:17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+    opacity: 50%;
+    color: white;
+    transition: opacity 0.5s ease-out;
+}
+
+.flex-container > div:hover{
+    opacity: 100%;
+}
+
+.section-landing{
+    height: 100vh;
+    position: relative;
+}
+
+
+
+#threejs-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.links-container{
+
+    
+    position: absolute;    
+    top: calc(10% + 100px);
+    left: 20%;
+    opacity: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    display: flex;
+    transform: translateY(150px);
+    gap: 20px;
+    transition: opacity 6s ease-in-out, transform 8s cubic-bezier(0.19, 1, 0.22, 1);
+
+}
+.links-container .link{
+
+    padding: 8px 15px;
+    background-color: rgb(18, 3, 9);
+    border-radius: 4px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    cursor: pointer;
+    opacity: 80%;
+    transition: opacity 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+    font-size: 14px;
+}
+
+
+.links-container .link:hover{
+    opacity: 65%;
+    color: rgb(18, 3, 9);
+    background-color: rgb(239, 246, 238);
+}
+
+.links-container.loaded{
+    opacity: 100%;
+    transform: translateY(50%);
+}
+
+.section-about{
+    min-height: 100vh;
+    padding: 5%;
+    position: relative;
+    z-index: 1;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 65% auto;
+    padding: 20px;
+    min-height: 100vh;
+    gap: 20px;
+}
+
+.about-container > .side{
+    background-image: url("image (1).png");
+    background-size: 30rem;
+    opacity: 95%;
+    animation-timeline: view();
+    animation-name: img-move;
+    animation-fill-mode: forwards;
+
+}
+
+.about-heading{
+    animation-timeline: view();
+    animation-name: move-up;
+    animation-fill-mode: forwards;
+}
+
+.content{
+
+    background-color: rgba(9, 0, 11, 0.667);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.596);
+    border-width: 1px;
+    border-radius: 7px;
+    transition: box-shadow 0.5s ease-out, background-color 0.5s ease-out;
+    animation-timeline: view();
+    animation-name: fade-in;
+    animation-fill-mode: forwards;
+
+}
+
+.content:hover{
+
+    background-color: rgba(223, 215, 221, 0.692);;
+    box-shadow:0px 0px 20px rgba(239, 246, 238, 0.692);
+
+}
+@keyframes fade-in {
+    from{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-25%);
+        opacity: 1;
+    }
+}
+@keyframes move-up {
+    from{
+        transform: translateY(450%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+}
+
+@keyframes img-move {
+    from{
+        background-position-y: 100%;
+    }
+    to {
+        background-position-y: -100%;
+    }
+}
+
+.footer{
+    padding: 1%;
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    z-index: 1;
+}
