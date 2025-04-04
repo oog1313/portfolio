@@ -93,8 +93,10 @@
          let maxDist = 0
          let offset = 0
          let initialY = 0
+         const time = Date.now()
          // scene
          const scene = new THREE.Scene()
+
          // camera
          const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 100)
          camera.position.set(3, 0, 1.5)
@@ -125,25 +127,25 @@
             const mesh = new THREE.Mesh(geometry, ballMaterial)
 
             function update(){
-                mesh.rotation.x += 0.005;
-                mesh.rotation.y += 0.01;
+                
+                mesh.rotation.x = 0.0005*Date.now();
+                mesh.rotation.y = 0.0005*Date.now();
                 mesh.position.z = Math.sin((ballx - bally)/2 + offset)
                 if (camera) {
                     // Calculate distance to camera
                     const distance = camera.position.distanceTo(mesh.position);
                     
-                    if(maxDist < 10){
-                        maxDist += 0.00008
+                    if(((maxDist-time)/400)<10){
+                        maxDist = Date.now()
                     }
                     // Map the distance to opacity (1.0 when close, fading to 0.0 when far)
                     const opacity = 1.0 - Math.min(1.0, Math.max(0.0, 
-                        (distance) / (maxDist)
+                        (distance) / ((maxDist-time)/400)
                         ));
-            
                     // Apply opacity to the material
                     mesh.material.opacity = opacity;
                 }
-                offset+=0.00002;
+                offset=(0.0008*Date.now())
             }
             return{
                 update, 
@@ -184,9 +186,10 @@
 
 
          function animate() {
+
             requestAnimationFrame(animate)
-            camera.position.x = 3+Math.sin(Date.now() * 0.0005);
-            camera.position.y = initialY + Math.cos(Date.now() * 0.0003);
+            camera.position.x = 3+Math.sin(Date.now() * (0.00005));
+            camera.position.y = initialY + Math.cos(Date.now() * (0.0001));
 
             balls.forEach(b => b.update())
             renderer.render(scene, camera)
