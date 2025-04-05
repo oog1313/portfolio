@@ -54,19 +54,24 @@ h1.loaded2{
     transform: translateY(430%);
 }
 
-.flex-container{
-    display: flex;
-    justify-content: space-between;
+.nav-bar{
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color:rgba(9, 0, 11, 0.242);
+    backdrop-filter: blur(10px);
+    z-index: 2;
 }
 
-.flex-container > div{
-    cursor: pointer;
-    width: auto;
-    margin-left: 5%;
-    margin-right: 50px;
+.nav-bar > a {
+
+    float: left;
+    display: block;
     text-align: center;
-    line-height: 50px;
+    padding: 14px 20px;
     font-size:17px;
+    text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bolder;
     opacity: 50%;
@@ -74,9 +79,15 @@ h1.loaded2{
     transition: opacity 0.5s ease-out;
 }
 
-.flex-container > div:hover{
+.nav-bar > a.right {
+    float: right;
+}
+
+.nav-bar > a:hover{
     opacity: 100%;
 }
+
+
 
 .section-landing{
     height: 100vh;

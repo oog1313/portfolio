@@ -13,15 +13,11 @@
     <body>
 
         <div class = "section-landing">
-            <div class = "flex-container">
-
-                <div>!&lt;&gt;</div>
-                <div class = "flex-container">
-                    <div>resume</div>
-                    <div>projects</div>  
-                    <div>experience</div> 
-                </div>
-            
+            <div class="nav-bar">
+                <a href="#">Home</a>
+                <a href="#" class = "right">resume</a>
+                <a href="#" class = "right">projects</a>
+                <a href="#" class="right">experience</a>
             </div>
 
             <h1 id="slide-text">
@@ -188,8 +184,8 @@
          function animate() {
 
             requestAnimationFrame(animate)
-            camera.position.x = 3+Math.sin(Date.now() * (0.00005));
-            camera.position.y = initialY + Math.cos(Date.now() * (0.0001));
+            camera.position.x = 3+Math.sin(Date.now() * (0.0005));
+            camera.position.y = initialY + Math.cos(Date.now() * (0.0003));
 
             balls.forEach(b => b.update())
             renderer.render(scene, camera)
