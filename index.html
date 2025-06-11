@@ -36,20 +36,46 @@
 
             </div>
         </div>
-
-
+        
+        
         <div class="section-about">
             <h2 class = "about-heading">About Me</h2>
-            <div class = "about-container">
-                <div class = "content"></div>
-                <div class = "side"><h2> asdifuhasdiufhasidufh </h2></div>
-                <div class = "content"></div>
-                <div class = "side"><h2> asdifuhasdiufhasidufh </h2></div>
-                <div class = "content"></div>
-                <div class = "side"><h2> asdifuhasdiufhasidufh </h2></div>
+            <div class="carousel-wrapper">
+                <div class = "about-content-container" id = "shift">
+                    <div class = "about-left" id="about-left" onclick = "rightFunction()">
+                        <div class = 'left-arrow' id = 'left-arrow'>
+                            <img src = 'image (1).png' alt = 'arrow' width = 30px height = 30px >
+                        </div>
+                        <div>
+                            <p>footer</p>
+                            <p>here will go all my information. such as ebende03@uoguelph.ca please hire me into interships blah blah blah</p>
+                            <p>226-898-2689</p>
+                            <p>amongst other ways to contact me etc etc etc</p>
+                        </div>
+                    </div>
+                    <div class = "about-container">
+                        <div class = "item1"></div>
+                        <div class = "item2"></div>
+                        <div class = "item3"></div>
+                        <div class = "item4"></div>
+                        <div class = "item5"></div>
+                    </div>
+                    <div class = "about-right" id="about-right" onclick = "leftFunction()">
+                        <div class = 'right-arrow' id = 'right-arrow'>
+                            <img src = 'image (1).png' alt = 'arrow' width = 30px height = 30px >
+                        </div>
+                        <div>
+                            <p>footer</p>
+                            <p>here will go all my information. such as ebende03@uoguelph.ca please hire me into interships blah blah blah</p>
+                            <p>226-898-2689</p>
+                            <p>amongst other ways to contact me etc etc etc</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="section-about">
+        
+        <div class="section-projects">
             <h2 class = "about-heading">About Me</h2>
         </div>
 
@@ -68,21 +94,37 @@
                 }, 100);
                 });
 
-                document.addEventListener('', function(){
+                function rightFunction(){
+                    if(document.getElementById('shift').classList.contains('slideR')){
+                        document.getElementById('shift').classList.remove('slideR');
+                        document.getElementById('left-arrow').classList.remove('rotateL');
+                    }
+                    else{
+                        document.getElementById('shift').classList.add('slideR');
+                        document.getElementById('left-arrow').classList.add('rotateL');
+                    }
+                }
+                function leftFunction(){
+                    if(document.getElementById('shift').classList.contains('slideL')){
+                        document.getElementById('shift').classList.remove('slideL');
+                        document.getElementById('right-arrow').classList.remove('rotateR');
+                    }
+                    else{
+                        document.getElementById('shift').classList.add('slideL');
+                        document.getElementById('right-arrow').classList.add('rotateR');
+                    }
+                }
 
-                    
-
-                })
+                
 
         </script>
+        
         
         <div id="threejs-container"></div>
 
         <script type="module">
      
 
-         // Hello Cube App
-         // Your first Three.js application
          // sizes
          let width = window.innerWidth
          let height = window.innerHeight
@@ -97,6 +139,12 @@
          const camera = new THREE.PerspectiveCamera(70, width / height, 0.1, 100)
          camera.position.set(3, 0, 1.5)
          camera.rotation.set(0,20,-5)
+
+         // renderer
+         const renderer = new THREE.WebGL1Renderer({alpha:true, antialias:true})
+         renderer.setSize(width, height)
+         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
          // sphere
          const geometry = new THREE.SphereGeometry(0.2, 5, 5)
          const material = new THREE.MeshBasicMaterial({
@@ -115,7 +163,7 @@
          function makeBall(ballx, bally){
 
             const ballMaterial = new THREE.MeshBasicMaterial({
-                color: 0xffffff,
+                color: 0xFFFFF0,
                 wireframe: true,
                 transparent: true,
                 opacity: 1.0
@@ -175,10 +223,7 @@
          })   
 
 
-         // renderer
-         const renderer = new THREE.WebGL1Renderer({alpha:true})
-         renderer.setSize(width, height)
-         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
 
 
          function animate() {
